@@ -1,9 +1,12 @@
+
+import matplotlib
 from utils import fileutil
 import numpy as np
 import matplotlib.pyplot as plt
 
 from utils.commonUtil import listTocsv, listToexcel
 
+plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 '''
 标记点
 ‘.’：点(point marker)
@@ -64,6 +67,8 @@ from utils.commonUtil import listTocsv, listToexcel
 '''
 
 def businessflow(listdata):
+    fig,ax = plt.subplots()
+    ax.grid(b=True,axis='y') #axis参数设置在哪个轴上显示网格线，可选参数为'x','y','both'
     fc = []
     zp = []
     esc = []
@@ -75,14 +80,14 @@ def businessflow(listdata):
         zp.append(float(dataarray[2])*4 / 20000)
         esc.append(float(dataarray[4])*4 / 20000)
         hy.append(float(dataarray[6])*4 / 20000)
-    lfc = plt.plot(xaxis, fc, 'r--', label='fc')
-    lzp = plt.plot(xaxis, zp, 'g--', label='zp')
-    lesc = plt.plot(xaxis, esc, 'b--', label='esc')
-    lhy = plt.plot(xaxis, hy, 'k--', label='hy')
+    lfc = plt.plot(xaxis, fc, 'r--', label='房产')
+    lzp = plt.plot(xaxis, zp, 'g--', label='招聘')
+    lesc = plt.plot(xaxis, esc, 'b--', label='二手车')
+    lhy = plt.plot(xaxis, hy, 'k--', label='黄页')
     plt.plot(xaxis, fc, 'ro-', xaxis, zp, 'g+-', xaxis, esc, 'b^-', xaxis, hy, 'g^')
-    plt.title('hour flow business ')
-    plt.xlabel('hour')
-    plt.ylabel('num (w)')
+    plt.title('各业务线每小时流水')
+    plt.xlabel('小时')
+    plt.ylabel('流水量 (w)')
     plt.legend()
     plt.show()
 
@@ -197,7 +202,7 @@ def bingbusiness(dataa):
     plt.show()
 
 if __name__ == "__main__":
-    # listdata = fileutil.readFile("/Users/gengbin/Documents/zhour.log")
+    listdata = fileutil.readFile("/Users/gengbin/Documents/zhour.log")
     # listdatb=[]
     # for dataa in listdata:
     #     dicta = {}
@@ -209,8 +214,8 @@ if __name__ == "__main__":
     #     listdatb.append(dicta)
     # listToexcel(listdatb,'../data/hourbusiness1.xlsx')
     # listdatb = fileutil.readFile("/Users/gengbin/Documents/zhoursource.log")
-    # businessflow(listdata)
+    businessflow(listdata)
     # sourcenums(listdatb)
-    dataa = fileutil.readFile("../data/data.log")
+    # dataa = fileutil.readFile("../data/data.log")
     # bingv2(dataa,'hy')
-    bingbusiness(dataa)
+    # bingbusiness(dataa)
