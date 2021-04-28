@@ -1,5 +1,5 @@
 from utils import fileutil
-from utils.commonUtil import listToexcel
+from utils.commonUtil import listToexcel, mergedict
 
 
 def parseInvert(path):
@@ -47,13 +47,13 @@ def parseStore(path):
 
 if __name__ == '__main__':
     print("a")
-    # list = []
-    # dictInvert = parseInvert("/Users/gengbin/Documents/invert")
-    # dictstore = parseStore("/Users/gengbin/Documents/store")
-    # list.append(dictInvert)
-    # list.append(dictstore)
-    # lista = mergedict(dictInvert,dictstore)
-    # listToexcel(lista,"./text.xlsx")
+    list = []
+    dictInvert = parseInvert("/Users/gengbin/Documents/invert")
+    dictstore = parseStore("/Users/gengbin/Documents/store")
+    list.append(dictInvert)
+    list.append(dictstore)
+    lista = mergedict(dictInvert,dictstore)
+    listToexcel(lista,"./text.xlsx")
 
 
 

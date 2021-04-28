@@ -83,5 +83,6 @@ class create_captcha:
 if __name__ == "__main__":
     x = create_captcha()
     image = x.gene_code()
-    image.show()
+    Image.Image.save(image,'../data/c.png')
+    # image.show()
     print(x.text)

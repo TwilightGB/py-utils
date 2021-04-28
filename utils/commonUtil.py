@@ -7,6 +7,11 @@ def listToexcel(lista,path):
     pf.to_excel(path, encoding='utf-8', index=False)
 
 
+def listTocsv(lista,path):
+    pf = pd.DataFrame(lista)
+    pf.to_csv(path, encoding='utf-8', index=False)
+
+
 #字典合并
 def mergedict(dicta,dictb):
     lista = []

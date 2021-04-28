@@ -57,4 +57,4 @@ if __name__ == '__main__':
         elif(str(data).startswith("weight")):
             setkey.add("weight\n")
         else:setkey.add(data.split(":")[0]+"\n")
-writeFile("./store.log",sorted(setkey))
+    writeFile("./store.log",sorted(setkey))
